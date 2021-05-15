@@ -1,12 +1,12 @@
 <template>
   <div class="cotainer">
-      <h2>Contact page</h2>
+      <h2>Home page</h2>
   </div>
 </template>
 
 <script>
 export default {
-name:'Contact'
+name:'Home'
 }
 </script>
 

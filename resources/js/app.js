@@ -6,7 +6,14 @@
 
 require('./bootstrap');
 window.Vue = require('vue');
+
+import VueRouter from 'vue-router';
+
+
 import App from './App.vue'
+import  Home from '../js/components/Home'
+import  ContactList from '../js/components/ContactList'
+Vue.use(VueRouter);
 
 
 import VueAxios from 'vue-axios';
@@ -15,6 +22,21 @@ import Vue from 'vue';
 // import Vue from 'vue';
 Vue.use(VueAxios,axios)
 
+const routes = [
+
+    {
+        name:'/',
+        path:'/',
+        component:Home
+    },
+    {
+        name:'/contacts',
+        path:'/contacts',
+        component:ContactList
+    }
+
+];
+const router = new VueRouter({mode:'history',routes:routes});
 const app = new Vue(Vue.util.extend(App)).$mount('#app')
 /**
  * The following block of code may be used to automatically register your

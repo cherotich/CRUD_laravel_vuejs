@@ -14,13 +14,13 @@
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="contact in contacts" :key="contact.id">
         <tr>
-          <td scope="row">1</td>
-          <td scope="row">name</td>
-          <td scope="row">test@gmail.com</td>
-          <td scope="row">dev</td>
-          <td scope="row">4756487363</td>
+          <th scope="row">{{contact.id}}</th>
+          <td >{{contact.name}}</td>
+          <td>{{contact.email}}</td>
+          <td >{{contact.designation}}</td>
+          <td >{{contact.contatc_no}}</td>
          <td><button class ="btn btn-danger bt-sm">Delete</button></td> 
 
         </tr>
@@ -33,13 +33,30 @@
 export default {
 name: 'Contact',
 created(){
-
+this.loadData();
 },
 methods:{
   loadData(){
-    let url = this.url
+    let url = this.url +'/api/getContacts';
+    this.axios.get(url).then(
+      response=>
+    { 
+       this.contacts = response.data
+       console.log(this.contacts)
+       }
+    );
   }
-}
+  },
+  mounted(){
+    console.log("Contact list component mounted")
+  },
+  data(){
+    return {
+      url:document.head.querySelector('meta[name="url"]').content,
+    contacts:[]
+    }
+  }
+
 }
 </script>
 

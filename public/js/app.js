@@ -1943,8 +1943,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'contacts'
+  name: 'Contact'
 });
 
 /***/ }),
@@ -37720,7 +37743,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h2", [_vm._v("\n    Contact page\n  ")])])
+    return _c("div", [
+      _c("h2", { staticClass: "text-center p-2 text-white bg-primary mt-5" }, [
+        _vm._v("\n    Contacts\n  ")
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Designation")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Contact")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", { attrs: { scope: "row" } }, [_vm._v("1")]),
+            _vm._v(" "),
+            _c("td", { attrs: { scope: "row" } }, [_vm._v("name")]),
+            _vm._v(" "),
+            _c("td", { attrs: { scope: "row" } }, [_vm._v("test@gmail.com")]),
+            _vm._v(" "),
+            _c("td", { attrs: { scope: "row" } }, [_vm._v("dev")]),
+            _vm._v(" "),
+            _c("td", { attrs: { scope: "row" } }, [_vm._v("4756487363")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("button", { staticClass: "btn btn-danger bt-sm" }, [
+                _vm._v("Delete")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

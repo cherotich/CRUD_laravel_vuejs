@@ -37,7 +37,7 @@ const routes = [
 
 ];
 const router = new VueRouter({mode:'history',routes:routes});
-const app = new Vue(Vue.util.extend(App)).$mount('#app')
+const app = new Vue(Vue.util.extend({router},App)).$mount('#app')
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

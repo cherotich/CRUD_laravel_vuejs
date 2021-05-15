@@ -1,12 +1,19 @@
 <template>
-  <div class="cotainer">
-      <h2>Contact page</h2>
+  <div>
+      <Navbar/>
+      <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar';
 export default {
-name:'Contact'
+name:'app',
+components:{
+    Navbar
+}
 }
 </script>
+
+
 

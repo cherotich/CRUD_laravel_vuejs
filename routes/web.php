@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('api')->group(function(){
-//get contacts
-Route::get('getContacts','contactController@getContacts');
-});
+
+
+

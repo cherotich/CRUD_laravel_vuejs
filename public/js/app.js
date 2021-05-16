@@ -2128,6 +2128,20 @@ __webpack_require__.r(__webpack_exports__);
         _this.contacts = response.data;
         console.log(_this.contacts);
       });
+    },
+    deleteContact: function deleteContact(id) {
+      var _this2 = this;
+
+      var url = this.url + "/api/deleteContact/".concat(id);
+      this.axios["delete"](url).then(function (response) {
+        if (response.status) {
+          _this2.loadData();
+
+          _this2.$utils.showSuccess('success', response.message);
+        } else {
+          _this2.$utils.showError('Error', response.message);
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -46236,7 +46250,21 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(contact.contact_no))]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c("td", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger bt-sm",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.deleteContact(contact.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
             ])
           ])
         })
@@ -46264,14 +46292,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger bt-sm" }, [_vm._v("Delete")])
     ])
   }
 ]

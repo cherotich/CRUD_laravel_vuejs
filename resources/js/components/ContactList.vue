@@ -25,7 +25,7 @@
           <td>{{contact.email}}</td>
           <td >{{contact.designation}}</td>
           <td >{{contact.contact_no}}</td>
-         <td><button class ="btn btn-danger bt-sm">Delete</button></td> 
+         <td><button class ="btn btn-danger bt-sm" @click.prevent="deleteContact(contact.id)">Delete</button></td> 
 
         </tr>
       </tbody>
@@ -49,6 +49,21 @@ methods:{
        console.log(this.contacts)
        }
     );
+  },
+  deleteContact(id){
+let url = this.url + `/api/deleteContact/${id}`;
+this.axios.delete(url).then(response =>{
+if(response.status){
+  this.loadData();
+  this.$utils.showSuccess('success', response.message);
+
+}
+else
+{
+   this.$utils.showError('Error', response.message)
+
+}
+});
   }
   },
   mounted(){

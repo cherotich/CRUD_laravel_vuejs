@@ -24,7 +24,7 @@
           <td >{{contact.name}}</td>
           <td>{{contact.email}}</td>
           <td >{{contact.designation}}</td>
-          <td >{{contact.contatc_no}}</td>
+          <td >{{contact.contact_no}}</td>
          <td><button class ="btn btn-danger bt-sm">Delete</button></td> 
 
         </tr>

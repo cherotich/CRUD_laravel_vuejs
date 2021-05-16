@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <h2 class="text-center p-2 text-white bg-primary mt-5">
+  <div class="container">
+     
+       <h2 class="text-center p-2 text-white bg-primary mt-5 head-two">
+         
       Contacts
     </h2>
+   
+   
     <table class="table"> 
       <thead>
         <tr>
@@ -59,4 +63,13 @@ methods:{
 
 }
 </script>
+<style scoped>
+.head-two{
+  text-align:center;
+  margin-top:90px;
 
+
+}
+
+
+</style>

@@ -6,41 +6,51 @@
     </h2>
     <div class="card-body">
         <div class="col-md-6 offset-md-3">
-            <form class="action">
+            <form id="validateForm" @submit.prevent="saveContact"
+            enctype="multipart/form-data" novalidate>
+<div class="alert alert-danger" v-if="errors.length">
+    <ul class="mb-0">
+<li v-for="(error,index) in errors" :key=index>
+    {{error}}
+</li>
+    </ul>
+</div>
 <div class="fom-group">
     <label for="name" class="name">Name</label>
-    <input type="text" id="name" class="form-control" 
+    <input type="text" id="name" v-model="contact.name"
+    class="form-control" 
     placeholder="Enter Name">
 </div>
 
 <div class="fom-group">
     <label for="email" class="name">Email</label>
-    <input type="email" id="email" class="form-control" 
+    <input type="email"   id="email" v-model="contact.email" class="form-control" 
     placeholder="Enter Email">
 </div>
 
 <div class="fom-group">
     <label for="designation" class="name">Designation</label>
-    <input type="text" id="designation" class="form-control" 
+    <input type="text"  id="designation" v-model="contact.designation"  class="form-control" 
     placeholder="Enter Designation">
 </div>
 <div class="fom-group">
     <label for="name" class="name">Contact Number</label>
-    <input type="number" id="contact_no" class="form-control" 
-    placeholder="Enter Name">
+    <input type="number"   id="contact_no" v-model="contact.contact_no" class="form-control" 
+    placeholder="Enter Contact no">
 </div>
 <div class="fom-group">
     <label for="bio" class="name">Biography</label>
-    <input type="text" id="bio" class="form-control" 
-    placeholder="Enter Biography">
+    <textarea type="text"  id="bio"  v-model="contact.bio" class="form-control" 
+  cols="20" rows="5"
+    placeholder="Enter Biography"></textarea>
 </div>
 
 <div class="custom-file">
     <input type="file" class="custom-file-input"
-    id="validatedCustomFile">
+    id="validatedCustomFile" v-on:change="saveImage">
     <label for="validatedCustomFile" class="custom-file-label">Choose file...</label>
 </div>
-<bttton class="btn btn-primary mt-4">Submit</bttton>
+<button class="btn btn-primary mt-4">Submit</button>
             </form>
         </div>
         </div>
@@ -50,7 +60,71 @@
 
 <script>
 export default {
-name:"add_contact"
+name:"add_contact",
+data(){
+    return {
+      url:document.head.querySelector('meta[name="url"]').content,
+      contact:{},
+      name:'',
+      email:'',
+      bio:'',
+      designation:'',
+      contact_no:'',
+      errors:[]
+    }
+},
+methods: {
+    saveContact(){
+        this.errors=[];
+        if(!this.contact.name){
+this.errors.push('Name is required');
+        }
+          if(!this.contact.email){
+this.errors.push('Email is required');
+        }
+          if(!this.contact.designation){
+this.errors.push('Designation is required');
+        }
+          if(!this.contact.contact_no){
+this.errors.push('Contact No is required');
+        }
+        if(!this.errors.length){
+            let formData = new FormData();
+            formData.append('name',this.contact.name);
+            formData.append('email',this.contact.email);
+            formData.append('bio',this.contact.bio);
+            formData.append('image',this.image);
+            formData.append('designation',this.contact.designation);
+            formData.append('contact_no',this.contact.contact_no);
+            let url = this.url + '/api/save_contact'
+            this.axios.post(url,formData).then((response) => {
+if (response.status) {
+document.getElementById("name").value='';
+document.getElementById("email").value='';
+document.getElementById("designation").value='';
+document.getElementById("bio").value='';
+document.getElementById("contact_no").value='';
+document.getElementById("validatedCustomFile").value='';
+this.$utils.showSuccess('success', response.message)
+
+}
+else {
+ this.$utils.showError('Error', response.message)
+}
+            }).catch(error =>{
+                this.errors.push(error.response.data);
+            });
+ }
+
+    },
+    saveImage(e){
+this.image = e.target.files[0];
+console.log(this.image);
+    }
+},
+mounted: function(){
+    console.log('Add contact component loaded')
+}
 }
 </script>
 

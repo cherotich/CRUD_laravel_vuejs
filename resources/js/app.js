@@ -13,6 +13,8 @@ import VueRouter from 'vue-router';
 import App from './App.vue'
 import  Home from '../js/components/Home'
 import  ContactList from '../js/components/ContactList'
+import AddContact from '../js/components/AddContact'
+
 Vue.use(VueRouter);
 
 
@@ -33,6 +35,11 @@ const routes = [
         name:'/contacts',
         path:'/contacts',
         component:ContactList
+    },
+    {
+        name:'/add_contacts',
+        path:'/add_contacts',
+        component:AddContact
     }
 
 ];

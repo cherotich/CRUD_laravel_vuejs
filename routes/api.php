@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('save_contact','contactController@save_contact');
 //get contacts
 Route::get('getContacts','contactController@getContacts');
+
+//Delete contact
+Route::delete('deleteContact/{id}', 'contactController@deleteContact');

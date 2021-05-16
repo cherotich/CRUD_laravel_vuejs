@@ -34,4 +34,16 @@ else{
 }
 
     }
+    public function deleteContact($id){
+        $contact = Contact::find($id);
+        if($contact->delete()){
+            return response()->json(['status'=> true, 'message'=>'Contact Deleted succcessfully']);
+
+        }
+        else
+        {
+            return response()->json(['status'=> false, 'message'=>'Something went wrong']);
+
+        }
+    }
 }
